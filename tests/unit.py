@@ -1,11 +1,7 @@
-import sys
-import base64
-from testify import TestCase, assert_equal, setup, teardown, assert_raises
-from urllib import urlencode
+from testify import TestCase, setup, teardown, assert_equal
 import requests
 import authoritarian
 from mock import Mock, patch
-import omnijson as json
 
 class AuthoritarianTestCase(TestCase): 
 
@@ -24,7 +20,8 @@ class AuthoritarianTestCase(TestCase):
         self.requests_patcher.stop()
 
     def test_initialise(self):
-        pass
+        authoritarian.initialise('api-key')
+        assert_equal(authoritarian.config['api_key'], 'api-key')
 
     def test_account_status(self):
         pass

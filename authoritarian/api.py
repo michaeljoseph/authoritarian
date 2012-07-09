@@ -1,4 +1,5 @@
-import requests
+
+config = {}
 
 
 def _request():
@@ -6,7 +7,7 @@ def _request():
 
 
 def initialise(api_key):
-    pass
+    config['api_key'] = api_key
 
 
 def account_status():
