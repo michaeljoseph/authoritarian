@@ -241,3 +241,14 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
+
+import os
+import sys
+
+sys.path.append(os.path.abspath('_themes'))
+html_theme_path = ['_themes']
+html_theme = 'flask_small'
+html_theme_options = {
+    'index_logo': '',
+    'github_fork': 'michaeljoseph/authoritarian'
+}
