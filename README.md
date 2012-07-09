@@ -2,6 +2,10 @@
 
 Python API for the [AuthorityLabs Partner API](http://authoritylabs.com/api/partner-api/).
 
+![authoritarian](https://github.com/michaeljoseph/authoritarian/raw/master/resources/you.jpg)
+
+[![Build Status](https://secure.travis-ci.org/michaeljoseph/authoritarian.png)](http://travis-ci.org/michaeljoseph/authoritarian)
+
 This is a light [requests](https://github.com/kennethreitz/requests)-based wrapper over the API that provides the following features:
 
 * validation of supported AuthorityLabs [search engines](http://authoritylabs.com/api/reference/#engines)
