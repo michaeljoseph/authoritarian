@@ -1,8 +1,8 @@
+![authoritarian](https://github.com/michaeljoseph/authoritarian/raw/master/resources/you.jpg)
+
 # authoritarian
 
 Python API for the [AuthorityLabs Partner API](http://authoritylabs.com/api/partner-api/).
-
-![authoritarian](https://github.com/michaeljoseph/authoritarian/raw/master/resources/you.jpg)
 
 [![Build Status](https://secure.travis-ci.org/michaeljoseph/authoritarian.png)](http://travis-ci.org/michaeljoseph/authoritarian)
 
