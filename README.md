@@ -17,15 +17,14 @@ This is a light [requests](https://github.com/kennethreitz/requests)-based wrapp
     api_key = 'da39a3ee5e6b4b0d3255'
     authoritarian.initialise(api_key)
 
-	status = authoritarian.account_status()
+    status = authoritarian.account_status()
 	
     keyword = 'your country needs you'
-	engine = 'google'
-	locale = 'en-us'
-	response = authoritarian.search(keyword, engine, locale)
-	
-	response = authoritarian.search(keyword, engine, locale, immediate=True)
+    engine = 'google'
+    locale = 'en-us'
+    response = authoritarian.search(keyword, engine, locale)
+      
+    response = authoritarian.search(keyword, engine, locale, immediate=True)
 
-	rank_date = '2012-07-07'
-	response = authoritarian.results(keyword, engine, locale, rank_date)
-	
+    rank_date = '2012-07-07'
+    response = authoritarian.results(keyword, engine, locale, rank_date)
