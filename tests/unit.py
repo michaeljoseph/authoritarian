@@ -7,13 +7,13 @@ class AuthoritarianTestCase(TestCase):
 
     @setup
     def setup(self):
-        self.requests_patcher = patch('authoritarian.api._request')
-        self.request = self.requests_patcher.start()
+        self.requests_patcher = patch('authoritarian.api.requests')
+        self.requests = self.requests_patcher.start()
         self.response = Mock(spec=requests.Response,
             status_code=200, 
             headers={},
-            text='')
-        self.request.return_value = self.response
+            json='{}')
+        self.requests.get.return_value = self.response
 
     @teardown
     def teardown(self):
@@ -22,9 +22,17 @@ class AuthoritarianTestCase(TestCase):
     def test_initialise(self):
         authoritarian.initialise('api-key')
         assert_equal(authoritarian.config['api_key'], 'api-key')
+        assert_equal(authoritarian.config['account_id'], None)
 
     def test_account_status(self):
-        pass
+        authoritarian.initialise('api-key', 'account-id')
+        expected_response = {'json': 'response'}
+        self.response.json = expected_response 
+        response = authoritarian.account_status()
+        assert_equal(response, expected_response)
+        self.requests.get.assert_called_once_with(
+            'http://api.authoritylabs.com/account/account-id.json',
+            params={'auth_token': 'api-key'})
 
     def test_search_delayed(self):
         pass
