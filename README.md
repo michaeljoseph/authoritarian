@@ -21,14 +21,16 @@ This is a light [requests](https://github.com/kennethreitz/requests)-based wrapp
     api_key = 'da39a3ee5e6b4b0d3255'
     authoritarian.initialise(api_key)
 
-    status = authoritarian.account_status()
+    # returns https://gist.github.com/1201594#file_al_partner_api_accounts.json
+    status_json = authoritarian.account_status()
 	
     keyword = 'your country needs you'
     engine = 'google'
     locale = 'en-us'
-    response = authoritarian.search(keyword, engine, locale)
+    success = authoritarian.search(keyword, engine, locale)
       
-    response = authoritarian.search(keyword, engine, locale, immediate=True)
+    success = authoritarian.search(keyword, engine, locale, immediate=True)
 
     rank_date = '2012-07-07'
-    response = authoritarian.results(keyword, engine, locale, rank_date)
+    # returns https://gist.github.com/1201614
+    response_json = authoritarian.results(keyword, engine, locale, rank_date)
