@@ -29,6 +29,7 @@ def search(keyword, engine, locale, immediate=False):
         }[immediate],
 
         data={
+            'auth_token': config['api_key'],
             'keyword': keyword,
             'engine': engine,
             'locale': locale,
@@ -39,4 +40,15 @@ def search(keyword, engine, locale, immediate=False):
 
 
 def results(keyword, engine, locale, rank_date):
-    pass
+    response = requests.get(BASE + '/keywords/get.json',
+        params={
+            'auth_token': config['api_key'],
+            'keyword': keyword,
+            'response_format': 'json',
+            'engine': engine,
+            'locale': locale,
+            'rank_date': rank_date,
+        }
+    )
+    if response.ok:
+        return response.json

@@ -42,6 +42,7 @@ class AuthoritarianTestCase(TestCase):
         self.requests.post.assert_called_once_with(
             'http://api.authoritylabs.com/keywords',
             data={
+                'auth_token': 'api-key',
                 'keyword': 'your country needs you',
                 'engine': 'google',
                 'locale': 'en-us',
@@ -55,10 +56,24 @@ class AuthoritarianTestCase(TestCase):
         self.requests.post.assert_called_once_with(
             'http://api.authoritylabs.com/keywords/priority',
             data={
+                'auth_token': 'api-key',
                 'keyword': 'your country needs you',
                 'engine': 'google',
                 'locale': 'en-us',
             }
         )
     def test_results(self):
-        pass
+        authoritarian.initialise('api-key')
+        authoritarian.results('your country needs you', 'google', 
+            'en-us', '2012-07-12')
+        self.requests.get.assert_called_once_with(
+            'http://api.authoritylabs.com/keywords/get.json',
+            params={
+                'auth_token': 'api-key',
+                'keyword': 'your country needs you',
+                'response_format': 'json',
+                'engine': 'google',
+                'locale': 'en-us',
+                'rank_date': '2012-07-12',
+            }
+        )
