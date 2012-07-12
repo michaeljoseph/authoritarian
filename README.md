@@ -19,7 +19,8 @@ This is a light [requests](https://github.com/kennethreitz/requests)-based wrapp
 
     import authoritarian
     api_key = 'da39a3ee5e6b4b0d3255'
-    authoritarian.initialise(api_key)
+    account_id = '123'
+    authoritarian.initialise(api_key, account_id)
 
     # returns https://gist.github.com/1201594#file_al_partner_api_accounts.json
     status_json = authoritarian.account_status()
