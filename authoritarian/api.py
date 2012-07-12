@@ -20,7 +20,22 @@ def account_status():
 
 
 def search(keyword, engine, locale, immediate=False):
-    pass
+    # TODO: validate engine + locale
+    #path = '/keywords%s' % ('/priority' if immediate else '')
+    #response = requests.post(BASE + path,
+    response = requests.post(BASE + {
+            True: '/keywords/priority',
+            False: '/keywords'
+        }[immediate],
+
+        data={
+            'keyword': keyword,
+            'engine': engine,
+            'locale': locale,
+        }
+    )
+    if response.ok:
+        return response.json
 
 
 def results(keyword, engine, locale, rank_date):

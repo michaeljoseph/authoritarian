@@ -14,6 +14,7 @@ class AuthoritarianTestCase(TestCase):
             headers={},
             json='{}')
         self.requests.get.return_value = self.response
+        self.requests.post.return_value = self.response
 
     @teardown
     def teardown(self):
@@ -35,10 +36,29 @@ class AuthoritarianTestCase(TestCase):
             params={'auth_token': 'api-key'})
 
     def test_search_delayed(self):
-        pass
+        authoritarian.initialise('api-key')
+        authoritarian.search('your country needs you', 'google',
+            'en-us')
+        self.requests.post.assert_called_once_with(
+            'http://api.authoritylabs.com/keywords',
+            data={
+                'keyword': 'your country needs you',
+                'engine': 'google',
+                'locale': 'en-us',
+            }
+        )
 
     def test_search_immediate(self):
-        pass
-
+        authoritarian.initialise('api-key')
+        authoritarian.search('your country needs you', 'google', 
+            'en-us', immediate=True)
+        self.requests.post.assert_called_once_with(
+            'http://api.authoritylabs.com/keywords/priority',
+            data={
+                'keyword': 'your country needs you',
+                'engine': 'google',
+                'locale': 'en-us',
+            }
+        )
     def test_results(self):
         pass
